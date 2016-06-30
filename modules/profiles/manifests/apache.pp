@@ -1,6 +1,6 @@
-class profiles::webserver {
-  include apache
-  include apache::mod::php
+class profiles::apache {
+  include ::apache
+  include ::apache::mod::php
 
   file {'/var/www/html/phpinfo.php':
     ensure => file,

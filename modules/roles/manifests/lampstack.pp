@@ -1,5 +1,5 @@
 class roles::lampstack {
-  include profiles::webserver
+  include profiles::apache
   include profiles::ssh
   include profiles::mysql
 }
