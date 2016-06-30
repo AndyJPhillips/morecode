@@ -9,5 +9,5 @@ node 'puppetmaster.local' {
 }
 
 node 'puppetagent.local' {
-  include lampstack
+  include roles::lampstack
 }
