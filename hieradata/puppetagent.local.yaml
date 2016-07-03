@@ -1,2 +1,4 @@
 ---
-message: "This is the MOTD"
+classes:
+  - roles::lampstack
+motd::message: "\nThis is the amazing MOTD that's just for puppetagent.local\n\n"
