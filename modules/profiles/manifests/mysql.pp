@@ -1,10 +1,15 @@
-class profiles::mysql {
-  include ::mysql::server
+class profiles::mysql (
+  $dbuser = hiera('dbuser'),
+  $dbname = hiera('dbname'),
+  $dbpass = hiera('dbpass'),
+  $dbhost = hiera('dbhost'),
+) {
 
-  mysql::db { 'myapp':
-    user     => 'myuser',
-    password => 'mypass',
-    host     => 'localhost',
+  include ::mysql::server
+  mysql::db { "$dbname":
+    user     => "$dbuser",
+    password => "$dbpass",
+    host     => "$dbhost",
     grant    => ['SELECT', 'UPDATE'],
   }
 }

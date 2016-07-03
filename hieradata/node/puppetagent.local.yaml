@@ -1,0 +1,8 @@
+---
+classes:
+  - roles::lampstack
+motd::message: "\nThis is the amazing MOTD that's just for puppetagent.local\n\n"
+profiles::mysql::dbname: "myapp"
+profiles::mysql::dbuser: "myuser"
+profiles::mysql::dbpass: "mypass"
+profiles::mysql::dbhost: "localhost"
