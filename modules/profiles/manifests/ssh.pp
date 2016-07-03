@@ -1,28 +1,24 @@
-class profiles::ssh {
+class profiles::ssh (
+  $user = hiera('user'),
+  $passwd = hiera('passwd'),
+  $package = hiera('package'),
+  $service = hiera('service'),
+) {
   # Setup user for sshd
-  user { 'myapp':
+  user { "$user":
     ensure => present,
-    password => "$6$saltsalt$t6Sww7xOSuip49dTO/RgRxQPbz0kisV1S6M2LfQzIKHUJFk4sHJTacAGek7KWOBYPp1WVeZmsKWzykEmiwJCI.",
-    home => "/home/myapp",
+    password => "$passwd",
+    home => "/home/$user",
   }
-  file { '/home/myapp':
+  file { "/home/$user":
     ensure => directory,
-    owner => 'myapp',
-    require => User['myapp'],
+    owner => "$user",
+    require => User["$user"],
   }
   # ensure sshd is installed and running
-  # check to see whether the OS family is RedHat
-  case $::osfamily {
-    'RedHat': {
-      $package = 'openssh-server'
-      $service = 'sshd'
-    }
-    default: {
-      notify { "Unsupported OS family!\n": }
-    }
-  }
   package { $package:
     ensure => present,
+    before => Service["$service"],
   }
   service { $service:
     ensure => running,
