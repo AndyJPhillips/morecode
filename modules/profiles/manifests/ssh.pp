@@ -1,20 +1,12 @@
 class profiles::ssh (
-  $user = hiera('user'),
-  $passwd = hiera('passwd'),
-  $package = hiera('package'),
-  $service = hiera('service'),
+  $users = hiera('sshusers'),
+  $package = hiera('sshpackage'),
+  $service = hiera('sshservice'),
 ) {
-  # Setup user for sshd
-  user { "$user":
-    ensure => present,
-    password => "$passwd",
-    home => "/home/$user",
-  }
-  file { "/home/$user":
-    ensure => directory,
-    owner => "$user",
-    require => User["$user"],
-  }
+
+  # Setup users for sshd
+  create_resources(profiles::users, $users)
+
   # ensure sshd is installed and running
   package { $package:
     ensure => present,
