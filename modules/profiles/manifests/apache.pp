@@ -4,7 +4,7 @@ class profiles::apache {
 
   file {'/var/www/html/phpinfo.php':
     ensure => file,
-    source => 'puppet:///modules/php/phpinfo.php',
+    source => 'puppet:///modules/profiles/phpinfo.php',
     mode => '0644',
   }
 }

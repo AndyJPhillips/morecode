@@ -5,7 +5,6 @@ class profiles::mysql (
   $dbhost = hiera('dbhost'),
   $dbgrants = hiera('dbgrants'),
 ) {
-
   include ::mysql::server
   mysql::db { "$dbname":
     user     => "$dbuser",

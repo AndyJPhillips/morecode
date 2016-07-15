@@ -9,7 +9,7 @@ profiles::mysql::dbhost: "localhost"
 profiles::mysql::dbgrants: 
   - 'SELECT'
   - 'UPDATE'
-sshusers: 
+profiles::ssh::users: 
   'myapp':
     ensure: "present"
     password: "$6$saltsalt$t6Sww7xOSuip49dTO/RgRxQPbz0kisV1S6M2LfQzIKHUJFk4sHJTacAGek7KWOBYPp1WVeZmsKWzykEmiwJCI."

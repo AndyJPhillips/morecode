@@ -1,3 +1,3 @@
 ---
-sshpackage: "openssh-server"
-sshservice: "sshd"
+profiles::ssh::package: "openssh-server"
+profiles::ssh::service: "sshd"

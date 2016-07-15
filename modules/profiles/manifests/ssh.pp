@@ -1,9 +1,8 @@
 class profiles::ssh (
-  $users = hiera('sshusers'),
-  $package = hiera('sshpackage'),
-  $service = hiera('sshservice'),
+  $users = hiera('users'),
+  $package = hiera('package'),
+  $service = hiera('service'),
 ) {
-
   # Setup users for sshd
   create_resources(profiles::users, $users)
 
