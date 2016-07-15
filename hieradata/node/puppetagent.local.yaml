@@ -6,6 +6,9 @@ profiles::mysql::dbname: "myapp"
 profiles::mysql::dbuser: "myuser"
 profiles::mysql::dbpass: "mypass"
 profiles::mysql::dbhost: "localhost"
+profiles::mysql::dbgrants: 
+  - 'SELECT'
+  - 'UPDATE'
 sshusers: 
   'myapp':
     ensure: "present"

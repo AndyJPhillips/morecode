@@ -3,6 +3,7 @@ class profiles::mysql (
   $dbname = hiera('dbname'),
   $dbpass = hiera('dbpass'),
   $dbhost = hiera('dbhost'),
+  $dbgrants = hiera('dbgrants'),
 ) {
 
   include ::mysql::server
@@ -10,6 +11,6 @@ class profiles::mysql (
     user     => "$dbuser",
     password => "$dbpass",
     host     => "$dbhost",
-    grant    => ['SELECT', 'UPDATE'],
+    grant    => $dbgrants,
   }
 }
