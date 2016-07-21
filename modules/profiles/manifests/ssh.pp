@@ -1,10 +1,10 @@
 class profiles::ssh (
-  $users = hiera('users'),
-  $package = hiera('package'),
-  $service = hiera('service'),
+  $users = hiera('profiles::ssh::users'),
+  $package = hiera('profiles::ssh::package'),
+  $service = hiera('profiles::ssh::service'),
 ) {
   # Setup users for sshd
-  create_resources(profiles::users, $users)
+  create_resources(profiles::user, $users)
 
   # ensure sshd is installed and running
   package { $package:

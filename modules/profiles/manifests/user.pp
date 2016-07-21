@@ -1,4 +1,4 @@
-define profiles::users ($ensure, $password, $home) {
+define profiles::user ($ensure, $password, $home) {
   $username = $title
   if $ensure == 'present' { 
     user { $username: 
