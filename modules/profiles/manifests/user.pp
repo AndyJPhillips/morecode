@@ -18,7 +18,7 @@ define profiles::user ($ensure, $password, $home) {
     }
   }
   else {
-    warning( 'The value of the ensure parameter for the profiles::users type must be either present or absent.' )
+    warning( 'The value of the ensure parameter for the profiles::user type must be either present or absent.' )
   }
 }
 
